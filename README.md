@@ -1,7 +1,7 @@
 
-📊 Media Bitrate Analyzer
-<div align="center">
 
+<div align="center">
+📊 Media Bitrate Analyzer
 
 ![alt text](https://img.shields.io/badge/python-3.7+-blue.svg)
 
