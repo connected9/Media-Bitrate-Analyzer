@@ -1,77 +1,116 @@
 Media Bitrate Analyzer
-A user-friendly, robust desktop GUI application for analyzing the bitrate of video and audio files. This tool leverages the power of FFmpeg/ffprobe to generate detailed, easy-to-read bitrate charts, making it ideal for media professionals, developers, and enthusiasts who need to inspect the quality and encoding characteristics of their files.
-The application is built with Python and Tkinter, featuring a responsive, non-blocking interface that can handle large files and batch operations without freezing.
-(A screenshot of the main application window with files loaded and ready for analysis)
-Key Features
-Intuitive Graphical User Interface: A clean and simple UI built with Python's standard Tkinter library.
-Drag & Drop and File Browser: Easily add files by dragging them onto the window or by using the traditional "Browse" dialog.
-Batch Processing: Analyze multiple files at once. Select one, many, or all files in the list for sequential processing.
-Detailed Bitrate Chart: For each file, a high-quality .png chart is generated, visualizing the variable bitrate over time.
-Comprehensive Media Details: The generated chart includes a dedicated header section with crucial metadata:
+<div align="center">
+![alt text](https://img.shields.io/badge/python-3.7+-blue.svg)
+
+![alt text](https://img.shields.io/badge/license-MIT-green.svg)
+
+![alt text](https://img.shields.io/badge/platform-windows%20%7C%20macos%20%7C%20linux-lightgrey.svg)
+
+![alt text](https://img.shields.io/badge/built%20with-Tkinter%20%26%20Matplotlib-orange.svg)
+A user-friendly desktop GUI for generating detailed bitrate analysis charts for any video or audio file.
+</div>
+This tool leverages the power of FFmpeg/ffprobe to provide a deep insight into the encoding quality of your media files. It's designed for media professionals, developers, and enthusiasts who need a quick, reliable way to visualize variable bitrate data.
+<br>
+<div align="center">
+A GIF or high-quality screenshot of the application in action would go here.
+</div>
+<br>
+✨ Key Features
+🖥️ Intuitive GUI: A clean and simple interface built with native Python libraries.
+🖱️ Drag & Drop: Easily add files by dragging them onto the window.
+📂 Batch Processing: Analyze multiple files at once with a clear progress display.
+📈 Detailed Bitrate Charts: Generates a high-quality .png chart for each file, visualizing bitrate over time.
+📝 Comprehensive Metadata: Charts include a dedicated header with crucial info:
 File Duration, Size, and Overall Bitrate
 Video Codec, Resolution, and Average Bitrate
 Audio Codec, Sample Rate, Channel Layout, and Average Bitrate
-Responsive & Non-Blocking: Thanks to a multi-threaded architecture, the application remains fully responsive during analysis. A progress bar provides real-time feedback for the current file.
-Broad File Support: Intelligently analyzes the primary video or audio stream of any container format supported by your FFmpeg installation (e.g., .mp4, .mkv, .mov, .avi, .webm, .flac, .mp3, etc.).
-Robust Error Handling: If a file is corrupted or cannot be processed, the application will report the error and seamlessly continue to the next file in the batch.
-Cross-Platform: Runs on Windows, macOS, and Linux, wherever Python and FFmpeg are available.
-Prerequisites
-Before running the application, you must have the following installed on your system:
-Python 3.7+
-FFmpeg: The core of the analysis.
-Crucial: ffmpeg and ffprobe must be installed and accessible from your system's command line (i.e., they must be in your system's PATH).
-You can verify this by opening a terminal or command prompt and typing ffprobe -version. If it returns version information, you are ready.
-Download FFmpeg from the official site: https://ffmpeg.org/download.html
-Installation
-Get the Code:
-Clone this repository or download the video_analyzer_app_v4.py script to a local directory.
-Install Python Dependencies:
-The application requires two common Python libraries. Open your terminal or command prompt and install them using pip:
+⚡ Responsive & Non-Blocking: The multi-threaded architecture ensures the app never freezes, even with large files.
+🌐 Universal File Support: Intelligently analyzes any format supported by your FFmpeg installation (.mp4, .mkv, .flac, etc.).
+💪 Robust Error Handling: If a file fails, the app reports the error and seamlessly continues with the next file in the batch.
+⚙️ Prerequisites
+Before you begin, ensure you have the following installed and configured on your system.
+Python 3.7+ and the pip package manager.
+FFmpeg: This is the core engine for the analysis.
+❗️ CRUCIAL: ffmpeg and ffprobe must be accessible from your system's command line (i.e., they are in the system's PATH).
+Verify your installation by opening a terminal and running ffprobe -version. If it prints version information, you're all set!
+Download from the official site: ffmpeg.org/download.html
+🚀 Installation & Usage
+Follow these simple steps to get the analyzer running.
+Get the Code
+Download the video_analyzer_app_v4.py script to a new folder on your computer.
+Install Python Libraries
+Open a terminal or command prompt and run the following command to install the required packages:
 Generated bash
 pip install matplotlib tkinterdnd2
 Use code with caution.
 Bash
-Usage
-Launch the Application:
-Navigate to the directory containing the script in your terminal and run it:
+Launch the Application
+In your terminal, navigate to the folder where you saved the script and run:
 Generated bash
 python video_analyzer_app_v4.py
 Use code with caution.
 Bash
-Add Files:
-Drag and Drop: Drag one or more media files from your file explorer directly onto the application window.
-Browse: Click the "Browse Files" button to open a standard file selection dialog.
-Select Files for Analysis:
-Single File: Click on a file in the list.
-Multiple Files: Use Ctrl+Click (or Cmd+Click on macOS) to select multiple individual files, or Shift+Click to select a range.
-All Files: Click the "Select All" button.
-Start the Analysis:
-Click the "Analyze Selected" button. The process will begin.
-Monitor Progress:
-The status bar at the bottom will show the overall batch progress (e.g., "Analyzing 2/5...").
-The progress bar will show the analysis progress for the current file.
-The UI will remain fully usable during this time.
-Find the Output:
-Once the analysis for a file is complete, a .png chart named bitrate_chart_[your_filename].png will be saved in the same directory where the script is located. A dialog box will confirm when the entire batch is complete.
-The Output Chart
-The generated PNG file provides a clear and detailed overview of the media file's bitrate.
-The chart is composed of three main sections:
-Main Title: The full name of the analyzed media file, automatically wrapped to fit.
-Details Header: A clean, boxed-off section containing key metadata.
-| Detail | Description |
-| :--- | :--- |
-| Duration | Total runtime of the file in seconds. |
-| Size | Total size of the file in megabytes. |
-| Overall Bitrate| The average bitrate of the entire file (video + audio + overhead). |
-| Video | The video codec, resolution, and average video stream bitrate. |
-| Audio | The audio codec, sample rate, channel layout, and average audio stream bitrate. |
-Plot Area: A graph showing the calculated bitrate in kilobits per second (kbps) on the y-axis against time in seconds on the x-axis.
-How It Works (Technical Overview)
-The application is designed for robustness and a smooth user experience using a modern architecture.
-Frontend (View): The GUI is built with Tkinter and the tkinterdnd2 library for drag-and-drop support. It is responsible only for displaying information and capturing user input.
-Backend (Model): The VideoAnalysisEngine class contains all the business logic. It calls ffprobe subprocesses to extract media information and packet data, parses the output, and uses matplotlib to generate the final chart.
-Concurrency (Controller): An AnalysisWorker class running on a separate threading.Thread prevents the GUI from freezing during I/O-heavy operations. It communicates safely with the main UI thread using a queue.Queue to provide progress updates and results. This separation of concerns ensures the application is always responsive.
-License
+Analyze Your Files
+Add files using Drag & Drop or the "Browse Files" button.
+Select the files you wish to process in the list (Ctrl+Click, Shift+Click, or "Select All").
+Click "Analyze Selected".
+View Your Results
+A .png chart for each successfully processed file will be saved in the same folder as the script.
+📊 The Output Chart
+The generated chart is designed for clarity and provides a complete data snapshot.
+<div align="center">
+An example of a generated chart image would go here.
+</div>
+The chart includes:
+Main Title: The full filename, wrapped intelligently to fit.
+Details Header: A clean, boxed-off section with key metadata.
+Plot Area: A graph of bitrate (kbps) vs. time (seconds).
+🔧 How It Works: The Architecture
+The application is built on a robust three-part architecture to ensure stability and responsiveness.
+Generated code
++--------------------------+
+User Interaction -> |  VideoAnalyzerApp (View) | -> Creates Worker
+(Tkinter)         |  (Main GUI Thread)       |
+                  +------------+-------------+
+                               |
+                               | (file list, queue)
+                               v
+                  +--------------------------+
+                  |  AnalysisWorker (Thread) | -> Loops through files
+                  +------------+-------------+
+                               |
+                               | (progress, results)
+                               v (via Queue)
+                  +--------------------------+
+                  | VideoAnalysisEngine (Model)| -> Runs ffprobe, creates chart
+                  |  (Runs in Worker Thread) |
+                  +--------------------------+
+Use code with caution.
+View (GUI): Handles all user interactions without performing any heavy work itself.
+Controller (Worker Thread): Manages the analysis queue, processing one file at a time off the main thread to prevent the UI from freezing.
+Model (Engine): Contains the core logic, executing ffprobe commands and using matplotlib to generate the output images.
+⚠️ Troubleshooting
+Encountered an issue? Here are solutions to common problems.
+<details>
+<summary><strong>Error: "ffprobe not found" or "Dependency Missing"</strong></summary>
+Problem: The script cannot find the ffprobe executable.
+Solution: You must add the directory containing ffmpeg.exe and ffprobe.exe to your system's PATH environment variable.
+Windows: Search for "Edit the system environment variables", click "Environment Variables...", select the "Path" variable under "System variables", click "Edit...", "New", and paste the path to your FFmpeg bin folder (e.g., C:\ffmpeg\bin). Restart your terminal.
+macOS/Linux: Edit your shell profile file (e.g., ~/.zshrc, ~/.bash_profile) and add the line: export PATH="/path/to/your/ffmpeg/bin:$PATH". Save the file and restart your terminal or run source ~/.zshrc.
+</details>
+<details>
+<summary><strong>Error: "Permission denied" when saving the chart</strong></summary>
+Problem: The script does not have permission to write files in its current location.
+Solution: Make sure you are running the script from a directory where you have write permissions (e.g., your Desktop or Documents folder). Avoid running it from protected locations like C:\Program Files.
+</details>
+<details>
+<summary><strong>Analysis is very slow the first time, then fast.</strong></summary>
+Observation: The first file takes a long time, but analyzing it again is almost instant.
+Explanation: This is normal and is due to File System Caching. The first time, your computer reads the file from the slow disk. Your operating system then keeps a copy in fast RAM. Subsequent analyses read from RAM, which is much faster. This is not a bug, but a feature of modern operating systems.
+</details>
+🤝 Contributing
+Feedback, bug reports, and feature requests are welcome! Please feel free to open an issue if this project were hosted on a platform like GitHub.
+📜 License
 This project is licensed under the MIT License.
 <details>
 <summary>Click to view License</summary>
@@ -84,7 +123,7 @@ Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
 in the Software without restriction, including without limitation the rights
 to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the, and to permit persons to whom the Software is
+copies of the Software, and to permit persons to whom the Software is
 furnished to do so, subject to the following conditions:
 
 The above copyright notice and this permission notice shall be included in all
