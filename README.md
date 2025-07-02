@@ -7,6 +7,7 @@ Media Bitrate Analyzer
 ![alt text](https://img.shields.io/badge/platform-windows%20%7C%20macos%20%7C%20linux-lightgrey.svg)
 
 ![alt text](https://img.shields.io/badge/built%20with-Tkinter%20%26%20Matplotlib-orange.svg)
+
 A user-friendly desktop GUI for generating detailed bitrate analysis charts for any video or audio file.
 </div>
 This tool leverages the power of FFmpeg/ffprobe to provide a deep insight into the encoding quality of your media files. It's designed for media professionals, developers, and enthusiasts who need a quick, reliable way to visualize variable bitrate data.
