@@ -135,30 +135,6 @@ Plot Area: A graph of bitrate (kbps) vs. time (seconds).
 
 The application is built on a robust three-part architecture to ensure stability and responsiveness.
 
-Generated code
-+--------------------------+
-User Interaction -> |  VideoAnalyzerApp (View) | -> Creates Worker
-(Tkinter)         |  (Main GUI Thread)       |
-                  +------------+-------------+
-                               |
-                               | (file list, queue)
-                               v
-                  +--------------------------+
-                  |  AnalysisWorker (Thread) | -> Loops through files
-                  +------------+-------------+
-                               |
-                               | (progress, results)
-                               v (via Queue)
-                  +--------------------------+
-                  | VideoAnalysisEngine (Model)| -> Runs ffprobe, creates chart
-                  |  (Runs in Worker Thread) |
-                  +--------------------------+
-IGNORE_WHEN_COPYING_START
-content_copy
-download
-Use code with caution.
-IGNORE_WHEN_COPYING_END
-
 View (GUI): Handles all user interactions without performing any heavy work itself.
 
 Controller (Worker Thread): Manages the analysis queue, processing one file at a time off the main thread to prevent the UI from freezing.
